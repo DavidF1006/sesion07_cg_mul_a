@@ -3,6 +3,11 @@
 </div>
 <canvas id='canvas'/>
 <script type="text/javascript">
+
+function deg2rad(g){
+  return (Math.PI /180) * g;
+}
+
 function draw() {
   var ctx = document.getElementById('canvas').getContext('2d');
 
@@ -11,7 +16,7 @@ function draw() {
   // blue rect
   ctx.fillStyle = '#0095DD';
   ctx.fillRect(30, 30, 100, 100);
-  ctx.rotate((Math.PI / 180) * 25);
+  ctx.rotate(deg2rad(25));
   // grey rect
   ctx.fillStyle = '#4D4E53';
   ctx.fillRect(30, 30, 100, 100);

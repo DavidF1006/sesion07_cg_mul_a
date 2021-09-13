@@ -1,0 +1,90 @@
+div
+  button onclick=draw()Trazarbutton
+  button onclick=cls()Limpiar Pantallabutton
+  button onclick=rotarTrazar(1)Girar Rectangulo 1button 
+  button onclick=rotarTrazar(2)Girar Rectangulo 2button
+div
+canvas id='canvas'
+script type=textjavascript
+var ctx = document.getElementById('canvas').getContext('2d');
+
+function cls(){
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(0, 0, 400, 400);
+}
+
+function rotarTrazar(n){
+  if (n==1){
+    draw();
+    clean2();
+    ctx.restore();
+    ctx.translate(80, 80);  translate to rectangle center
+                           x = x + 0.5  width
+                           y = y + 0.5  height
+  ctx.rotate(deg2rad(40));  rotate
+  ctx.translate(-80, -80);  translate back
+  }
+   else {
+    draw();
+    clean1();
+    ctx.restore();  
+    ctx.translate(200, 80);  translate to rectangle center
+                           x = x + 0.5  width
+                           y = y + 0.5  height
+    
+    ctx.rotate(deg2rad(-60));  rotate
+    ctx.translate(-200, -80);  translate
+   }
+}
+
+
+function draw() {
+  ctx.save();
+   first blue rect
+  ctx.fillStyle = '#0095DD';
+  ctx.fillRect(30, 30, 100, 100);
+
+   second draw blue rect
+  ctx.fillStyle = '#0095DD';
+  ctx.fillRect(150, 30, 100, 100);
+
+}
+
+function clean1(){
+
+   first blue rect
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(30, 30, 100, 100);
+}
+
+function clean2(){
+
+   second draw blue rect
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(150, 30, 100, 100);
+
+function deg2rad(g){
+  return (Math.PI 180)  g;
+}
+
+}
+
+
+  ctx.rotate(deg2rad(25));
+
+   grey rect
+  ctx.fillStyle = '#4D4E53';
+  ctx.fillRect(30, 30, 100, 100);
+  ctx.restore();
+
+  ctx.translate(200, 80);  translate to rectangle center
+                           x = x + 0.5  width
+                           y = y + 0.5  height
+  ctx.rotate(deg2rad(-25));  rotate
+  ctx.translate(-200, -80);  translate back
+
+   draw grey rect
+  ctx.fillStyle = '#4D4E53';
+  ctx.fillRect(150, 30, 100, 100);
+
+script
